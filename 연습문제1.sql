@@ -137,7 +137,7 @@ SELECT COUNT(`custid`)AS `고객수` FROM `Customer`;
 SELECT COUNT(DISTINCT `company`) AS `제조업체 수` FROM `Product`;
 
 #실습1-25 [주문 테이블에서 주문제품별 수량의 합계]
-SELECT 
+SELECT  
 	`orderProduct` AS `주문 상품번호`, 
 	SUM(`ordercount`) AS `총 주문수량` 
 	FROM `Order`
