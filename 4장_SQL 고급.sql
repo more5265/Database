@@ -3,7 +3,8 @@
 #내용 : 4.SQL 고급 실습하기
 
 #실습4-1
-
+# 오름차순 ASC  내림차순 DESC
+# FROM 테이블명 ORDER BY 기준_칼럼명 ASC
 CREATE TABLE `Member` (
 	`uid`		VARCHAR(10) PRIMARY KEY,
 	`name`	VARCHAR(10) NOT NULL,
