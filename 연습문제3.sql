@@ -180,6 +180,12 @@ JOIN `Lecture` AS b
 ON a.regLecNo = b.lecNo;
 
 #실습 3-24
+SELECT 
+	COUNT(*) AS `사회복지 마케팅 수강 신청건수`,
+	AVG(`regTotalScore`) AS `사회복지 마케팅 평균`
+FROM `Register` AS a
+JOIN `Lecture` AS b
+ON a.regLecNo = b.lecNo;
 
 
 #실습 3-25
