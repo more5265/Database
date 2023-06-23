@@ -189,7 +189,7 @@ ON a.regLecNo = b.lecNo;
 
 
 #실습 3-25
-
+SELECT
 
 #실습 3-26
 
