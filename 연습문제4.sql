@@ -263,6 +263,10 @@ FROM `customer` AS a
 LEFT JOIN `order` AS b ON a.custId = b.custId
 WHERE orderId IS NULL;
 
+SELECT `name`
+FROM `Customer`
+WHERE `custId` NOT IN(SELECT DISTINCT `custId` FROM `Order`);
+
 #실습 4-44 [book 테이블에 새로운 도서 `스포츠 의학`을 삽입
 #스포츠 의학은 한솔의학서적 에서 출간했으며 가격은 미정이다.
 INSERT INTO `Book`(`bookId`, `bookName`, `publisher`) VALUES (11, '스포츠의학', '한솔의학서적');
