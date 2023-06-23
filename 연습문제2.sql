@@ -191,11 +191,11 @@ ORDER BY `t_a_no`;
 
 #실습 2-24 [입금 거래만 계좌별로 합계 구하고 10만원 이상만 큰 순서대로]
 SELECT `t_a_no`, `t_dist`, 
-SUM(`t_amount`) AS `합계`
-FROM `bank_transaction`
-WHERE `t_dist`=1
-GROUP BY `t_a_no` HAVING `합계`>=100000
-ORDER BY `합계` DESC; 
+	SUM(`t_amount`) AS `합계`
+	FROM `bank_transaction`
+	WHERE `t_dist`=1
+	GROUP BY `t_a_no` HAVING `합계`>=100000
+	ORDER BY `합계` DESC; 
 
 #실습 2-25 [계좌 테이블과 고객 테이블을 결합]
 SELECT * 
@@ -222,30 +222,31 @@ ON a.t_a_no = b.a_no;
 
 #실습 2-28
 SELECT 
-	`a_no`			AS `계좌번호`,
-	`a_item_name`	AS `계좌이름`,
-	`c_no`			AS `주민번호(사업자번호)`,
-	`c_name`			AS `고객명`,
-	`a_balance`		AS `현재잔액`
+	`t_no` AS `거래번호`,
+	`t_a_no` AS `계좌번호`,
+	`a_c_no` AS `고객번호(주민번호)`,
+	`t_dist` AS `거래구분`,
+	`t_amount` AS `거래금액`,
+	`t_datetime` AS `거래일자`
 FROM `bank_account` AS a
-JOIN `bank_customer` AS b
-ON a.a_c_no = b.c_no;
+JOIN `bank_transaction` AS b
+ON a.a_no = b.t_a_no;
 
 #실습 2-29
-SELECT
+SELECT 
 	`t_no`,
-	``
-	``
-	``
-	``
-	``
-	``
-	``
-	FROM  AS
-	JOIN 
-	JOIN
-	WHERE
-	ORDER BY DESC;
+	`a_no`,
+	`c_no`,
+	`t_dist`,
+	`a_item_name`,
+	`c_name`,
+	`t_amount`,
+	`t_datetime`
+FROM `bank_transaction` AS a
+JOIN `bank_account` AS b ON a.t_a_no = b.a_no
+JOIN `bank_customer` AS c ON b.a_c_no = c.c_no
+WHERE `t_dist` = 1
+ORDER BY `t_amount` DESC;
 
 
 #실습 2-30 [거래구분이 입금, 출금이고 개인 고객을 대상으로 거래건수를 아래와 같이 조회하시오
@@ -287,7 +288,7 @@ JOIN
 
 
 
-/*
+/**
 COUNT
 FROM
 JOIN
@@ -295,4 +296,4 @@ JOIN
 WHERE IN AND
 GROUP BY
 ORDER BY DESC;
-*/
+**/
