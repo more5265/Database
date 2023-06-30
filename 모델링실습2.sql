@@ -1,6 +1,7 @@
 # 날짜 : 2023/06/28
 # 이름 : 이황성
-# 내용 : 모델링 실습2
+# 내용 : 데이터베이스모델링 실습2
+
 
 INSERT INTO `Departments` VALUES (101, '소아과', '김유신', '051-123-0101');
 INSERT INTO `Departments` VALUES (102, '내과', '김춘추', '051-123-0102');
@@ -14,6 +15,7 @@ INSERT INTO `Departments` VALUES (109, '신경외과', '이순신', '051-123-010
 INSERT INTO `Departments` VALUES (110, '비뇨기과', '정약용', '051-123-0110');
 INSERT INTO `Departments` VALUES (111, '안과', '박지원', '051-123-0111');
 INSERT INTO `Departments` VALUES (112, '치과', '전봉준', '051-123-0112');
+
 
 
 INSERT INTO `Doctors` VALUES ('D101101', '김유신', '1976-01-21', 'M', 101, '과장', '010-1101-1976', 'kimy@bw.com');
