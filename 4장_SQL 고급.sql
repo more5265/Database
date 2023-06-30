@@ -2,9 +2,14 @@
 #이름 : 이황성
 #내용 : 4.SQL 고급 실습하기
 
+
 #실습4-1
+
 # 오름차순 ASC  내림차순 DESC
+
+
 # FROM 테이블명 ORDER BY 기준_칼럼명 ASC
+
 CREATE TABLE `Member` (
 	`uid`		VARCHAR(10) PRIMARY KEY,
 	`name`	VARCHAR(10) NOT NULL,
@@ -13,12 +18,15 @@ CREATE TABLE `Member` (
 	`dep`		INT NOT NULL,
 	`rdate`	DATETIME NOT NULL
 	);
+	
 DROP TABLE `Department`;
+
 CREATE TABLE `Department` (
 	`depNo`	INT PRIMARY KEY,
 	`name`	VARCHAR(10) NOT NULL,
 	`tel`		VARCHAR(13) NOT NULL
 	);
+	
 	
 CREATE TABLE `Sales` (
 	`seq`		INT PRIMARY KEY AUTO_INCREMENT,
@@ -41,6 +49,7 @@ INSERT INTO `Member` VALUES ('a109', '허균', '010-1234-1009', '부장', 104, '
 INSERT INTO `Member` VALUES ('a110', '정약용', '010-1234-1010', '사원', 105, '2023-06-16 16:00:05');
 INSERT INTO `Member` VALUES ('a111', '박지원', '010-1234-1011', '사원', 105, '2023-06-16 16:00:05');
 
+
 INSERT INTO `Department`VALUES ('101', '영업1부', '051-512-1001');
 INSERT INTO `Department`VALUES ('102', '영업2부', '051-512-1002');
 INSERT INTO `Department`VALUES ('103', '영업3부', '051-512-1003');
@@ -48,6 +57,8 @@ INSERT INTO `Department`VALUES ('104', '영업4부', '051-512-1004');
 INSERT INTO `Department`VALUES ('105', '영업5부', '051-512-1005');
 INSERT INTO `Department`VALUES ('106', '영업지원부', '051-512-1006');
 INSERT INTO `Department`VALUES ('107', '인사부', '051-512-1007');
+
+
 
 INSERT INTO `Sales` VALUES ('1', 'a101', 2018, 1, 98100);
 INSERT INTO `Sales` VALUES ('2', 'a102', 2018, 1, 136000);

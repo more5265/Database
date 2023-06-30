@@ -81,6 +81,7 @@ CREATE TABLE `User5` (
 #실습2-10
 
 
+
 #실습2-11
 ALTER TABLE `User5` ADD `hp` VARCHAR(20);
 ALTER TABLE `User5` ADD `birth` CHAR(10) DEFAULT '0000-00-00' AFTER `name`;

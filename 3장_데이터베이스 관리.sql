@@ -2,11 +2,13 @@
 #이름 : 이황성
 #내용 : 3.데이터베이스 관리
 
+
 #실습3-1
 CREATE DATABASE `TestDB`;
 CREATE USER `tester`@`%` IDENTIFIED BY `1234`;
 GRANT ALL PRIVILEGES ON TestDB.* TO `tester`@`%`;
 FLUSH PRIVILEGES;
+
 
 
 #실습3-2
