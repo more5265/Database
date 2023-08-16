@@ -3,6 +3,7 @@
 #내용 : SQL 연습문제 1
 
 #실습1-1 [실습 데이터베이스와 사용자를 생성]
+
 CREATE DATABASE `Shop`;
 CREATE USER 'admin1'@'%' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON Shop.* TO 'admin1'@'%';
@@ -45,6 +46,7 @@ INSERT INTO `Customer` VALUES ('c108', '이순신', '010-1234-1008', '서울시 
 INSERT INTO `Customer` VALUES ('c109', '송상현', '010-1234-1009', '부산시 동래구', '2022-01-09');
 INSERT INTO `Customer` VALUES ('c110', '정약용', '010-1234-1010', '경기도 광주시', '2022-01-10');
 
+
 INSERT INTO `Product` VALUES (1, '새우깡', 5000, 1500, '농심');
 INSERT INTO `Product` VALUES (2, '초코파이', 2500, 2500, '오리온');
 INSERT INTO `Product` VALUES (3, '포카칩', 3600, 1700, '오리온');
@@ -52,6 +54,7 @@ INSERT INTO `Product` VALUES (4, '양파링', 1250, 1800, '농심');
 INSERT INTO `Product` (`prodNo`, `prodName`, `stock` ,`company`) VALUES (5, '죠리퐁', 2200, '크라운');
 INSERT INTO `Product` VALUES (6, '마카렛트', 3500, 3500, '롯데');
 INSERT INTO `Product` VALUES (7, '뿌셔뿌셔', 1650, 1200, '오뚜기');
+
 
 INSERT INTO `Order` VALUES (1, 'c102', 3, 2, '2022-07-01 13:15:10');
 INSERT INTO `Order` VALUES (2, 'c101', 4, 1, '2022-07-01 14:16:11');
@@ -63,6 +66,7 @@ INSERT INTO `Order` VALUES (7, 'c110', 1, 2, '2022-07-03 16:55:36');
 INSERT INTO `Order` VALUES (8, 'c104', 2, 4, '2022-07-04 14:23:23');
 INSERT INTO `Order` VALUES (9, 'c102', 1, 3, '2022-07-04 21:54:34');
 INSERT INTO `Order` VALUES (10, 'c107', 6, 1, '2022-07-05 14:21:03');
+
 
 #실습1-4 [고객 테이블에 존재하는 모든 속성을 조회]
 SELECT * FROM `Customer`;

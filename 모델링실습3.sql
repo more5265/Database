@@ -2,6 +2,7 @@
 # 이름 : 이황성
 # 내용 : 데이터베이스 모델링 실습3
 
+
 INSERT INTO `Users` VALUES ('user1', '김유신', '1976-01-21', 'M', '010-1101-1976', 'kimy@naver.com', 0, 1, '서울', '2022-01-10 10:50:12');
 INSERT INTO `Users` VALUES ('user2', '계백', '1975-06-11', 'M', '010-1102-1975', NULL, 1000, 1, '서울', '2022-01-10 10:50:12');
 INSERT INTO `Users` VALUES ('user3', '김춘추', '1989-05-30', 'M', '010-1103-1989', NULL, 1200, 2, '서울', '2022-01-10 10:50:12');
@@ -131,7 +132,17 @@ SELECT
 	userHp AS 휴대폰,
 	userPoint AS 현재포인트,
 	IFNULL(`point`, 0) AS 적립포인트
-FROM users AS a LEFT JOIN points AS b ON a.userId = b.userId;
+FROM users AS a LEFT JOIN points AS b ON a.userId = b.userId
+GROUP BY a.userId;
+
+SELECT 
+	a.userId AS 아이디,
+	userName AS 이름,
+	userHp AS 휴대폰,
+	userPoint AS 현재포인트,
+	IF(SUM(`point`)IS NULL, 0, SUM(`point`)) AS 포인트총합
+FROM users AS a LEFT JOIN points AS b ON a.userId = b.userId
+GROUP BY a.userId;
 
 
 #문제4 모든 주문의 주문번호, 주문자 아이디, 고객명, 주문가격, 주문일자 조회. 단, 주문금액 10만원이상, 큰 금액순, 같으면 이름순
@@ -159,6 +170,7 @@ JOIN products AS d ON c.prodNo = d.prodNo
 GROUP BY a.orderNo;
 
 
+
 #문제6 모든 상품의 상품번호, 상품명, 상품가격, 할인율, 할인된 가격을 조회
 SELECT 
 	a.prodNo AS 상품번호,
@@ -167,6 +179,19 @@ SELECT
 	b.itemDiscount AS 할인율,
 	FLOOR(prodPrice - (prodPrice * b.itemDiscount / 100)) AS `할인된 가격`
 FROM products AS a JOIN orderitems AS b ON a.prodNo = b.prodNo;
+
+
+
+
+SELECT 
+	a.prodNo AS 상품번호,
+	prodName AS 상품명,
+	prodPrice AS 상품가격,
+	b.itemDiscount AS 할인율,
+	FLOOR(`prodPrice` * (1 - a.pordDiscount/ 100)) AS `할인가`
+FROM products AS a JOIN orderitems AS b ON a.prodNo = b.prodNo;
+
+
 
 
 #문제7 고소영이 판매하는 모든 상품의 상품번호, 상품명, 상품가격, 재고수량, 판매자이름 조회
@@ -180,6 +205,7 @@ FROM sellers AS a JOIN products AS b ON a.sellerNo = b.sellerNo
 WHERE sellerManager = '고소영';
 
 
+
 #문제8 아직 상품을 판매하지 않은 판매자의 판매자번호, 판매자상호, 판매자이름, 판매자 연락처 조회
 SELECT 
 	a.sellerNo AS `판매자 번호`,
@@ -188,6 +214,7 @@ SELECT
 	a.sellerPhone AS `판매자 연락처`
 FROM sellers AS a LEFT JOIN products AS b ON a.sellerNo = b.sellerNo
 WHERE b.prodSoid IS NULL;
+
 
 
 
@@ -200,8 +227,8 @@ SELECT
 FROM orderitems AS a JOIN products AS c ON a.prodNo = c.prodNo
 JOIN orders AS b ON a.orderNo = b.orderNo
 GROUP BY b.orderNo
-HAVING FLOOR(SUM((prodPrice - (prodPrice * a.itemDiscount / 100)) * a.itemCount)) >= 100000
-ORDER BY FLOOR(SUM((prodPrice - (prodPrice * a.itemDiscount / 100)) * a.itemCount)) DESC;
+HAVING `최종총합` >= 100000
+ORDER BY `최종총합` DESC;
 
 
 
@@ -214,8 +241,39 @@ SELECT
    a.orderNo,
    (prodPrice - (prodPrice * a.itemDiscount / 100)) * a.itemCount AS totalPrice 
 	FROM orderitems AS a JOIN products AS c ON a.prodNo = c.prodNo) AS FSUM
-	
 JOIN orders AS b ON FSUM.orderNo = b.orderNo
 GROUP BY b.orderNo
 HAVING FLOOR(SUM(FSUM.totalPrice)) >= 100000
 ORDER BY `최종총합` DESC;
+
+
+
+SELECT
+	`orderNo`,
+	SUM(`할인가`) AS `최종총합`
+FROM
+(
+	SELECT
+		*,	
+		FLOOR(`itemPrice` * (1 - `itemDiscount` / 100) * `itemCount` ) AS `할인가`
+		FROM `OrderItems`
+) AS a
+GROUP BY `orderNo`
+HAVING `최종총합` >= 100000
+ORDER BY `최종총합` DESC;
+
+
+
+SELECT
+	`orderNo`,
+	SUM(FLOOR(`itemPrice` * (1 - `itemDiscount` / 100) * `itemCount` )) AS `최종총합`
+FROM `OrderItems`
+GROUP BY `orderNo`
+HAVING `최종총합` >= 100000
+ORDER BY `최종총합` DESC;
+
+
+#문제10 장보고 고객이 주문했던 모든 상품명을 고객명, 상품명 으로 조회
+# 단 상품명은 중복X, 상품명은 구분자 , 로 나열
+
+GROUP_CONCAT

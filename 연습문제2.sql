@@ -3,6 +3,7 @@
 #내용 : SQL 연습문제2
 
 #실습 2-1 데이터베이스 사용자 만들기
+
 CREATE DATABASE `Bank`;
 CREATE USER 'admin2'@'%' IDENTIFIED BY '1234';
 GRANT ALL PRIVILEGES ON `Bank`.* TO 'admin2'@'%';
@@ -46,6 +47,7 @@ INSERT INTO `bank_customer` VALUES ('870830-1000004', '강감찬', 1, '010-1234-
 INSERT INTO `bank_customer` VALUES ('910912-2000005', '신사임당', 1, '010-1234-1005', '강원도 강릉시');
 INSERT INTO `bank_customer` VALUES ('941127-1000006', '이순신', 1, '010-1234-1006', '부산시 영도구');
 
+
 INSERT INTO `bank_account` VALUES ('101-11-1001', 'S1', '자유저축예금', '730423-1000001', 420000, '2005-07-21');
 INSERT INTO `bank_account` VALUES ('101-11-1003', 'S1', '자유저축예금', '870830-1000004', 53000, '2007-02-17');
 INSERT INTO `bank_account` VALUES ('101-11-2001', 'S1', '자유저축예금', '220-82-52237', 23000000, '2003-04-14');
@@ -56,6 +58,7 @@ INSERT INTO `bank_account` VALUES ('101-13-1005', 'S3', '주택청약예금', '9
 INSERT INTO `bank_account` VALUES ('101-21-1004', 'L1', '고객신용대출', '910912-2000005', 12005000, '2009-08-25');
 INSERT INTO `bank_account` VALUES ('101-22-1006', 'L2', '에금담보대출', '730423-1000001', 25000, '2013-12-11');
 INSERT INTO `bank_account` VALUES ('101-23-1007', 'L3', '주택담보대출', '750210-1000002', 2700000, '2020-09-23');
+
 
 INSERT INTO `bank_transaction` VALUES (1, '101-11-1001', 1, 50000, '2022-08-21 04:26:52');
 INSERT INTO `bank_transaction` VALUES (2, '101-11-1003', 2, 120000, '2022-08-21 04:26:52');

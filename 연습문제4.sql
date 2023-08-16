@@ -1,7 +1,6 @@
 #날짜 : 2023/06/23
 #이름 : 이황성
-#내용 : SQL 연습문제3
-
+#내용 : SQL 연습문제4
 
 #실습 4-1
 CREATE DATABASE `BookStore`;
@@ -41,6 +40,7 @@ INSERT INTO `Customer` VALUES (3, '장미란', '대한민국 강원도', '000-70
 INSERT INTO `Customer` VALUES (4, '추신수', '미국 클리블랜드', '000-8000-0001');
 INSERT INTO `Customer`(`custId`, `name`, `address`) VALUES (5, '박세리', '대한민국 대전');
 
+
 INSERT INTO `Book` VALUES (1, '축구의 역사', '굿스포츠', 7000);
 INSERT INTO `Book` VALUES (2, '축구아는 여자', '나무수', 13000);
 INSERT INTO `Book` VALUES (3, '축구의 이해', '대한미디어', 22000);
@@ -52,6 +52,7 @@ INSERT INTO `Book` VALUES (8, '야구를 부탁해', '이상미디어', 13000);
 INSERT INTO `Book` VALUES (9, '올림픽 이야기', '삼성당', 7500);
 INSERT INTO `Book` VALUES (10, 'Olympic Champions', 'Pearson', 13000);
 
+
 INSERT INTO `Order` VALUES (1, 1, 1, 6000, '2014-07-01');
 INSERT INTO `Order` VALUES (2, 1, 3, 21000, '2014-07-03');
 INSERT INTO `Order` VALUES (3, 2, 5, 8000, '2014-07-03');
@@ -62,6 +63,7 @@ INSERT INTO `Order` VALUES (7, 4, 8, 13000, '2014-07-07');
 INSERT INTO `Order` VALUES (8, 3, 10, 12000, '2014-07-08');
 INSERT INTO `Order` VALUES (9, 2, 10, 7000, '2014-07-09');
 INSERT INTO `Order` VALUES (10, 3, 8, 13000, '2014-07-10');
+
 
 #실습 4-4 [모든 회원의 회원번호, 이름, 주소를 조회]
 SELECT `custId`,`name`,`address`FROM `Customer`;
