@@ -49,3 +49,16 @@ CREATE TABLE `Terms`(
 	`terms`		TEXT NOT NULL,
 	`privacy`	TEXT NOT NULL
 );
+
+
+
+CREATE DATABASE `File`;
+
+CREATE TABLE `FileTest` (
+	`fno`		INT AUTO_INCREMENT PRIMARY KEY,
+	`oName`	VARCHAR(100),
+	`sName`	VARCHAR(100),
+	`rdate`	DATETIME
+);
+
+SELECT * FROM `Terms`;

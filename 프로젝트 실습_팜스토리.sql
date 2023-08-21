@@ -90,3 +90,10 @@ CREATE TABLE `Order` (
 
 
 SELECT * FROM `User` WHERE `uid`
+
+SELECT
+	`no`, `title`, `rdate`
+FROM `Article` WHERE `cate`='grow' Order BY `no` DESC LIMIT 5;
+
+
+ALTER TABLE `Product` CHANGE `cate` `type` TINYINT;
