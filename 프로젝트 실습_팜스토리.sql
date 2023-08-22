@@ -97,3 +97,6 @@ FROM `Article` WHERE `cate`='grow' Order BY `no` DESC LIMIT 5;
 
 
 ALTER TABLE `Product` CHANGE `cate` `type` TINYINT;
+
+INSERT INBTO `Product` (`type`, `pName`, `price`, `delivery`, `stock`, `sold`, `thumb1`, `thumb2`, `thumb3`, `seller`);
+SELECT `type`, `pName`, `price`, `delivery`, `stock`, `sold`, `thumb1`, `thumb2`, `thumb3`, `seller` FROM `Product`;
